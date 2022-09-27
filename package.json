@@ -1,0 +1,30 @@
+{
+  "name": "arduino-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "concurrently \"webpack --watch\" \"npx tailwindcss -i ./src/input.css -o ./dist/main.css --watch\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jv-aquino/Arduino-Javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jv-aquino/Arduino-Javascript/issues"
+  },
+  "homepage": "https://github.com/jv-aquino/Arduino-Javascript#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.1.8",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "concurrently": "^7.4.0",
+    "johnny-five": "^2.1.0"
+  }
+}
