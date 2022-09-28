@@ -1,1 +1,0 @@
-(()=>{const e=(()=>{const e=document.querySelector("img.led");return{changeLedImage:t=>{let g="./img/led"+t+".png";e.setAttribute("src",g)},getLedImage:()=>e}})(),t=(()=>{let e=!0;return{getLedOn:()=>e,toggleLedOn:()=>{e=!e}}})();e.getLedImage().addEventListener("click",(()=>{t.toggleLedOn(),1==t.getLedOn()?e.changeLedImage("on"):e.changeLedImage("off")}))})();
