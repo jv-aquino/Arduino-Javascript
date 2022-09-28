@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "concurrently \"webpack --watch\" \"npx tailwindcss -i ./src/input.css -o ./dist/main.css --watch\""
+    "build": "concurrently \"npx tailwindcss -i ./src/input.css -o ./dist/main.css --watch\""
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,13 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
+    "@serialport/parser-readline": "^10.3.0",
+    "browser-serialport": "^2.1.0",
     "concurrently": "^7.4.0",
-    "johnny-five": "^2.1.0"
+    "etherport-client": "^0.1.4",
+    "johnny-five": "^2.1.0",
+    "serialport": "^10.4.0",
+    "socket.io": "^4.5.2",
+    "ws": "^8.9.0"
   }
 }
