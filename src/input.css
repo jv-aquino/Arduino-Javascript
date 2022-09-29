@@ -29,8 +29,8 @@ nav {
   grid-area: nav;
 }
 nav .logo {
-  width: 5.3rem;
-  height: 4.7rem;
+  width: 5.4rem;
+  height: 4.8rem;
 }
 
 main {
@@ -38,7 +38,24 @@ main {
   height: 100%;
 }
 main .led {
-  width: 567px;
+  width: 540px;
   height: auto;
   cursor: pointer;
+}
+
+ul.ledSection {
+  position: absolute;
+  top: 6.3rem;
+  right: 20px;
+
+  display: none;
+  flex-direction: column;
+}
+ul.ledSection > li {
+  cursor: pointer;
+  transition: .6s;
+}
+
+.visible {
+  display: flex !important;
 }

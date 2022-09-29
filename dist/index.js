@@ -1,4 +1,4 @@
-const socket = io('ws://localhost:8080');
+
 
 const Info = (() => {
   let ledOn = true;
@@ -11,6 +11,12 @@ const Info = (() => {
 })();
 
 const Dom = (() => {
+  const ledLi = document.querySelector("li.ledLi")
+  const menuUl = document.querySelector("ul.ledSection");
+
+  ledLi.addEventListener("mouseenter", () => menuUl.classList.add("visible"));
+  menuUl.addEventListener("mouseleave", () => menuUl.classList.remove("visible"));
+
   const ledImage = document.querySelector("img.led");
   const getLedImage = () => ledImage;
 
