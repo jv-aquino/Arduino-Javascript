@@ -11,19 +11,21 @@
 </head>
 <body>
   <div id="container">
-    <nav class="bg-zinc-900 p-4">
+    <nav class="bg-zinc-900 p-3 flex justify-between items-center">
       <img src="./img/logo.png" alt="Logo" class="logo">
-      <ul class="flex">
-        <li></li>
-        <li></li>
-        <li></li>
+      <ul class="flex px-20 text-3xl font-bold">
+        <li class="ledLi text-blue-200 cursor-default">Projects</li>
+        <ul class="ledSection bg-zinc-900 text-zinc-200">
+          <li class="p-4 text-green-400 hover:bg-green-400 hover:text-zinc-900">Single LED</li>
+          <li class="p-4 text-amber-400 hover:bg-amber-400 hover:text-zinc-900">Multiple LEDs</li>
+          <li class="p-4 text-red-400   hover:bg-red-400   hover:text-zinc-900">Traffic Lights</li>
+        </ul>
       </ul>
-      
     </nav>
     <main class="bg-zinc-200 flex items-center justify-center flex-col">
       <img src="./img/ledon.png" alt="Led - Flaticon.com" class="led p-6">
     </main>
   </div>
-  <script defer src="./index.js"></script>
+  <script src="./index.js"></script>
 </body>
 </html>
