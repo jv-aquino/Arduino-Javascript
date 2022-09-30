@@ -37,9 +37,10 @@ main {
   grid-area: main;
   height: 100%;
 }
-main .led {
-  width: 540px;
-  height: auto;
+main img {
+  height: 500px;
+  width: auto;
+  padding: 1.5rem;
   cursor: pointer;
 }
 
