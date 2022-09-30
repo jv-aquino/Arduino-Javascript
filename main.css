@@ -585,10 +585,6 @@ video {
   }
 }
 
-.visible {
-  visibility: visible;
-}
-
 .flex {
   display: flex;
 }
@@ -625,14 +621,6 @@ video {
 
 .p-3 {
   padding: 0.75rem;
-}
-
-.p-2 {
-  padding: 0.5rem;
-}
-
-.p-6 {
-  padding: 1.5rem;
 }
 
 .p-4 {
@@ -714,9 +702,10 @@ main {
   height: 100%;
 }
 
-main .led {
-  width: 540px;
-  height: auto;
+main img {
+  height: 500px;
+  width: auto;
+  padding: 1.5rem;
   cursor: pointer;
 }
 
@@ -737,21 +726,6 @@ ul.ledSection > li {
   display: flex !important;
 }
 
-.hover\:bg-zinc-200:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(228 228 231 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-green-200:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(187 247 208 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-zinc-400:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(161 161 170 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-green-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(74 222 128 / var(--tw-bg-opacity));
@@ -765,16 +739,6 @@ ul.ledSection > li {
 .hover\:bg-red-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
-
-.hover\:text-zinc-200:hover {
-  --tw-text-opacity: 1;
-  color: rgb(228 228 231 / var(--tw-text-opacity));
-}
-
-.hover\:text-blue-200:hover {
-  --tw-text-opacity: 1;
-  color: rgb(191 219 254 / var(--tw-text-opacity));
 }
 
 .hover\:text-zinc-900:hover {
