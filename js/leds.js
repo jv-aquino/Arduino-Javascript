@@ -1,9 +1,10 @@
 const createLedImage = (color) => {
-  const ledImg = document.createElement("img");
-  ledImg.setAttribute("src", "./img/" + color + "Led.png");
-  ledImg.id = color;
+  const ledImage = document.createElement("img");
+  ledImage.setAttribute("src", "./img/" + color + "Led.png");
+  ledImage.id = color;
+  ledImage.classList.add("led");
 
-  return ledImg;
+  return ledImage;
 }
 
 export {createLedImage};
