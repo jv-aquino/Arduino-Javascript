@@ -585,16 +585,20 @@ video {
   }
 }
 
+.visible {
+  visibility: visible;
+}
+
 .flex {
   display: flex;
 }
 
-.cursor-default {
-  cursor: default;
+.grid {
+  display: grid;
 }
 
-.flex-col {
-  flex-direction: column;
+.cursor-default {
+  cursor: default;
 }
 
 .items-center {
@@ -666,6 +670,11 @@ video {
   color: rgb(248 113 113 / var(--tw-text-opacity));
 }
 
+.invert {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -681,10 +690,9 @@ body {
 #container {
   width: 100%;
   height: 100vh;
-  max-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 7fr;
+  grid-template-columns: 100vw;
+  grid-template-rows: 1fr 6fr;
   grid-template-areas: "nav" "main";
 }
 
@@ -699,13 +707,16 @@ nav .logo {
 
 main {
   grid-area: main;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   height: 100%;
 }
 
 main img {
-  height: 500px;
-  width: auto;
-  padding: 1.5rem;
+  width: min(350px, 100vw);
+  height: auto;
+  padding: 1rem;
+  display: block;
+  margin: auto;
   cursor: pointer;
 }
 
@@ -715,6 +726,7 @@ ul.ledSection {
   right: 20px;
   display: none;
   flex-direction: column;
+  z-index: 2;
 }
 
 ul.ledSection > li {
@@ -724,6 +736,10 @@ ul.ledSection > li {
 
 .visible {
   display: flex !important;
+}
+
+.off {
+  opacity: 0.5;
 }
 
 .hover\:bg-green-400:hover {

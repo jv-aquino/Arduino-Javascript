@@ -17,11 +17,10 @@ body {
 #container {
   width: 100%;
   height: 100vh;
-  max-height: 100vh;
 
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 7fr;
+  grid-template-columns: 100vw;
+  grid-template-rows: 1fr 6fr;
   grid-template-areas: "nav" "main";
 }
 
@@ -35,12 +34,17 @@ nav .logo {
 
 main {
   grid-area: main;
+
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   height: 100%;
 }
 main img {
-  height: 500px;
-  width: auto;
-  padding: 1.5rem;
+  width: min(350px, 100vw);
+  height: auto;
+  padding: 1rem;
+
+  display: block;
+  margin: auto;
   cursor: pointer;
 }
 
@@ -51,6 +55,7 @@ ul.ledSection {
 
   display: none;
   flex-direction: column;
+  z-index: 2;
 }
 ul.ledSection > li {
   cursor: pointer;
@@ -59,4 +64,8 @@ ul.ledSection > li {
 
 .visible {
   display: flex !important;
+}
+
+.off {
+  opacity: 0.5;
 }
