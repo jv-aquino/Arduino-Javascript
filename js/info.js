@@ -46,4 +46,4 @@ const resetLet = () => {
 
 resetLet();
 
-export {getLed, toggleLed, resetLet, setLedOnOthersOff};
+export {getLed, toggleLed, resetLet, setLedOnOthersOff, setLed};
