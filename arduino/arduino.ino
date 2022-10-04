@@ -12,8 +12,7 @@ void setup()
 }
 
 void loop() {
-  if (Serial.available() > 0) {
-    
+  if (Serial.available() > 0) {    
     String receivedString = "";
     
     while (Serial.available() > 0) {
@@ -41,6 +40,26 @@ void loop() {
       digitalWrite(redPin, HIGH);
       digitalWrite(greenPin, LOW);
       digitalWrite(yellowPin, LOW);
+    }
+    else if (receivedString == "4") {
+      digitalWrite(redPin, LOW);
+      digitalWrite(greenPin, HIGH);
+      digitalWrite(yellowPin, HIGH);
+    }
+    else if (receivedString == "5") {
+      digitalWrite(redPin, HIGH);
+      digitalWrite(greenPin, HIGH);
+      digitalWrite(yellowPin, LOW);
+    }
+    else if (receivedString == "6") {
+      digitalWrite(redPin, HIGH);
+      digitalWrite(greenPin, LOW);
+      digitalWrite(yellowPin, HIGH);
+    }
+    else if (receivedString == "7") {
+      digitalWrite(redPin, HIGH);
+      digitalWrite(greenPin, HIGH);
+      digitalWrite(yellowPin, HIGH);
     }
   }
 }

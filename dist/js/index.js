@@ -1,6 +1,6 @@
 import * as Led from "./leds.js";
-import * as Info from "./info.js";/* 
-const socket = io("ws://localhost:8080"); */
+import * as Info from "./info.js";
+const socket = io("ws://localhost:8080");
 
 const Dom = (() => {
   const main = document.querySelector("main")
@@ -51,6 +51,40 @@ const Dom = (() => {
 })();
 
 const Controller = (() => {
+  const turnLedOn = (color) => {
+    if (Info.getLed(color) == false) {
+      Info.setLedOnOthersOff(color);
+      Dom.turnLedsOpacity(color, Info.getLed(color, true, true));
+    }
+  }
+
+  const emitSocket = () => {
+    if (Info.getLed("green") == true && Info.getLed("yellow") == true) { 
+      socket.emit('message', {"status" : "4"});
+    }
+    else if (Info.getLed("green") == true && Info.getLed("red") == true) { 
+      socket.emit('message', {"status" : "5"});
+    }
+    else if (Info.getLed("yellow") == true && Info.getLed("red") == true) { 
+      socket.emit('message', {"status" : "6"});
+    }
+    else if (Info.getLed("yellow") == true && Info.getLed("red") == true && Info.getLed("green") == true) { 
+      socket.emit('message', {"status" : "7"});
+    }
+    else if (Info.getLed("green") == true) { 
+      socket.emit('message', {"status" : "1"});
+    }
+    else if (Info.getLed("yellow") == true) {
+      socket.emit('message', {"status" : "2"});
+    }
+    else if (Info.getLed("red") == true) {
+      socket.emit('message', {"status" : "3"});
+    }
+    else {
+      socket.emit('message', {"status" : "0"});
+    }
+  }
+
   const activateListener = (program) => {
     Info.resetLet();
 
@@ -65,6 +99,7 @@ const Controller = (() => {
         else {
           Dom.changeLedImage("green", "off");
         }
+        emitSocket();
       });
     }
     else if (program == "multipleLeds") {
@@ -72,32 +107,26 @@ const Controller = (() => {
       leds.forEach(led => {
         led.addEventListener("click", () => {
           let color = led.id;
-
-          if(Info.getLed(color) == false) {
-            Info.setLedOnOthersOff(color);
-            Dom.turnLedsOpacity(color, Info.getLed(color, true, true));
-          }
+          
+          turnLedOn(color);
+          emitSocket();
         });
       });
     }
     else if (program == "trafficLights") {
-      
-    }
-
-    if (Info.getLed("green") == true) {/* 
-      socket.emit('message', {"status" : "1"}); */
-    }
-    else if (Info.getLed("yellow") == true) {/* 
-      socket.emit('message', {"status" : "2"}); */
-    }
-    else if (Info.getLed("red") == true) {/* 
-      socket.emit('message', {"status" : "3"}); */
-    }
-    else {/* 
-      socket.emit('message', {"status" : "3"}); */
+      Info.setLed("green", false);
+      let func = () => {
+        if (program == "trafficLights") {
+          turnLedOn("green"); emitSocket();
+          setTimeout(() => {turnLedOn("yellow"); emitSocket();}, 4000);
+          setTimeout(() => {turnLedOn("red"); emitSocket();}, 7000);
+          setTimeout(func, 11000);
+        }
+      };
+      func();
     }
   };
-
+  emitSocket();
   return {activateListener};
 })();
 

@@ -19,15 +19,15 @@ port.pipe(parser);
 const http = require('http').createServer();
 
 const io = require('socket.io')(http, {
-    cors: { origin: "*" }
+  cors: { origin: "*" }
 });
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
-    socket.on('message', (message) =>     {
-        port.write(message.status);
-        console.log("sent " + message.status);
-    });
+  console.log('a user connected');
+  socket.on('message', (message) => {
+    port.write(message.status);
+    console.log("sent " + message.status);
+  });
 });
 
 http.listen(8080, () => console.log('listening on http://localhost:8080') );
