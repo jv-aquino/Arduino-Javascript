@@ -28,7 +28,7 @@ const setLed = (color, value) => {
 };
 
 const setLedOnOthersOff = (led) => {
-  setLed(getLed(led), true);
+  setLed(led, true);
   
   getLed(led, true, true).forEach(other => {
     setLed(other, false);
