@@ -1,6 +1,6 @@
 import * as Led from "./leds.js";
 import * as Info from "./info.js";
-const socket = io("ws://localhost:8080");
+import * as Node from "./node.js";
 
 const Dom = (() => {
   const main = document.querySelector("main")
@@ -79,37 +79,10 @@ const Controller = (() => {
     }
   }
 
-  const emitSocket = () => {
-    if (Info.getLed("yellow") && Info.getLed("green") && Info.getLed("red")) { 
-      socket.emit('message', {"status" : "7"});
-    }
-    else if (Info.getLed("green") && Info.getLed("yellow")) { 
-      socket.emit('message', {"status" : "4"});
-    }
-    else if (Info.getLed("green") && Info.getLed("red")) { 
-      socket.emit('message', {"status" : "5"});
-    }
-    else if (Info.getLed("yellow") && Info.getLed("red")) { 
-      socket.emit('message', {"status" : "6"});
-    }
-    else if (Info.getLed("green")) { 
-      socket.emit('message', {"status" : "1"});
-    }
-    else if (Info.getLed("yellow")) {
-      socket.emit('message', {"status" : "2"});
-    }
-    else if (Info.getLed("red")) {
-      socket.emit('message', {"status" : "3"});
-    }
-    else {
-      socket.emit('message', {"status" : "0"});
-    }
-  }
-
   const activateListener = () => {
     let program = getActualProgram();
-    Info.resetLet();
-    emitSocket();
+    Info.resetLeds();
+    Node.emitSocket();
 
     if (program == "singleLed") {
       const greenLed = document.querySelector("img#green");
@@ -122,7 +95,7 @@ const Controller = (() => {
         else {
           Dom.changeLedImage("green", "off");
         }
-        emitSocket();
+        Node.emitSocket();
       });
     }
     else if (program == "multipleLeds") {
@@ -132,32 +105,32 @@ const Controller = (() => {
           let color = led.id;
           
           turnLed(color);
-          emitSocket();
+          Node.emitSocket();
         });
       });
     }
     else if (program == "trafficLights") {
       Info.setLed("green", false);
-      let func = () => {
-        Info.resetLet();
-        if (getActualProgram() == "trafficLights") {turnLed("green"); emitSocket();}
+      let trafficLoop = () => {
+        Info.resetLeds();
+        if (getActualProgram() == "trafficLights") {turnLed("green"); Node.emitSocket();}
         else {return}
 
         setTimeout(() => {
           if (getActualProgram() == "trafficLights") {
-            turnLed("yellow"); emitSocket();
+            turnLed("yellow"); Node.emitSocket();
           }
           else {return}}, 4000);
 
         setTimeout(() => {
           if (getActualProgram() == "trafficLights") {
-            turnLed("red"); emitSocket();
+            turnLed("red"); Node.emitSocket();
           }
           else {return}}, 7000);
         
         setTimeout(func, 11000);
       };
-      func();
+      trafficLoop();
     }
   };
 
