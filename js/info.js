@@ -38,12 +38,12 @@ const toggleLed = (led) => {
   setLed(led, !getLed(led));
 };
 
-const resetLet = () => {
+const resetLeds = () => {
   greenLed = true;
   yellowLed = false;
   redLed = false;
 };
 
-resetLet();
+resetLeds();
 
-export {getLed, toggleLed, resetLet, setLedOnOthersOff, setLed};
+export {getLed, toggleLed, resetLeds, setLedOnOthersOff, setLed};
