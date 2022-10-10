@@ -10,7 +10,7 @@ const Dom = (() => {
   ledLi.addEventListener("mouseenter", () => menuUl.classList.add("visible"));
   menuUl.addEventListener("mouseleave", () => menuUl.classList.remove("visible"));
   menuUl.childNodes.forEach(li => {
-    li.addEventListener("click", (e) => {changeDom(e.target.id)});
+    li.addEventListener("click", (e) => {Controller.changePage(e.target.id)});
   });
 
   const changeLedImage = (oldImg, newImg) => {
@@ -35,7 +35,7 @@ const Dom = (() => {
 
   const changeDom = (page) => {
     main.textContent = "";
-    
+
     if (page == "singleLed") {
         main.appendChild(Led.createLedImage("green"));
     }
@@ -43,13 +43,7 @@ const Dom = (() => {
       main.appendChild(Led.createLedImage("green"));
       main.appendChild(Led.createLedImage("yellow"));
       main.appendChild(Led.createLedImage("red"));
-      if (page == "multipleLeds") {
-        Info.setLedOnOthersOff("green");
-        turnLedsOpacity("green", Info.getLed("green", true, true));
-      }
     }
-    Controller.setActualProgram(page);
-    Controller.activateListener();
   };
 
   return {changeDom, changeLedImage, turnLedsOpacity};
@@ -61,6 +55,7 @@ const Controller = (() => {
     actualProgram = value;
   }
   const getActualProgram = () => actualProgram;
+
 
   const turnLed = (color) => {
     if (getActualProgram() == "trafficLights") {
@@ -117,26 +112,34 @@ const Controller = (() => {
         else {return}
 
         setTimeout(() => {
-          if (getActualProgram() == "trafficLights") {
+          if (getActualProgram() == "trafficLights") {  
             turnLed("yellow"); Node.emitSocket();
-          }
-          else {return}}, 4000);
+        }}, 4000);
 
         setTimeout(() => {
           if (getActualProgram() == "trafficLights") {
             turnLed("red"); Node.emitSocket();
-          }
-          else {return}}, 7000);
+        }}, 7000);
         
-        setTimeout(func, 11000);
+        setTimeout(trafficLoop, 11000);
       };
       trafficLoop();
     }
   };
+  
+  const changePage = (page) => {
+    Dom.changeDom(page);
+    if (page == "multipleLeds") {
+      Info.setLedOnOthersOff("green");
+      Dom.turnLedsOpacity("green", Info.getLed("green", true, true));
+    }
+    setActualProgram(page);
+    activateListener();
+  };
 
-  return {activateListener, setActualProgram};
+  return {changePage, activateListener};
 })();
 
 const Start = (() => {
-  Dom.changeDom("singleLed");
+  Controller.changePage("singleLed");
 })();
