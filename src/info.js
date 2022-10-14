@@ -16,13 +16,13 @@ const getLed = (color, invert, getName) => {
 const setLed = (color, value) => {
   switch(color) {
     case "green":
-      greenLed = value;
+      greenLed = Boolean(value);
       break;
     case "yellow":
-      yellowLed = value;
+      yellowLed = Boolean(value);
       break;
     case "red":
-      redLed = value;
+      redLed = Boolean(value);
       break; 
   }
 };

@@ -69,3 +69,25 @@ ul.ledSection > li {
 .off {
   opacity: 0.5;
 }
+
+#partyMode {
+  color: transparent;
+  background: repeating-linear-gradient(to left, 
+  rgb(255, 0, 76),#fe9000, #fff020,
+  #3edf4b,#3363ff, rgb(177, 2, 183), rgb(216, 1, 130));
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: rainbow 10s linear infinite;
+}
+#partyMode:hover {
+  color: white;
+  background: repeating-linear-gradient(to left, 
+  #ff004c,#fe9000, #fff020,
+  #3edf4b,#3363ff, rgb(177, 2, 183), rgb(216, 1, 130));
+  animation: rainbow 5s linear infinite;
+}
+@keyframes rainbow{
+  100% {
+      background-position: 30em 0;
+  }
+}

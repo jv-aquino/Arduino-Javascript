@@ -3,7 +3,7 @@ import * as Info from "./info.js";
 import * as Node from "./node.js";
 
 const Dom = (() => {
-  const main = document.querySelector("main")
+  const main = document.querySelector("main");
   const ledLi = document.querySelector("li.ledLi")
   const menuUl = document.querySelector("ul.ledSection");
 
@@ -37,7 +37,7 @@ const Dom = (() => {
     main.textContent = "";
 
     if (page == "singleLed") {
-        main.appendChild(Led.createLedImage("green"));
+      main.appendChild(Led.createLedImage("green"));
     }
     else {
       main.appendChild(Led.createLedImage("green"));
@@ -125,6 +125,23 @@ const Controller = (() => {
       };
       trafficLoop();
     }
+    else if (program == "partyMode") {
+      const leds = ["green", "yellow", "red"]
+      const partyLoop = () => {
+        setTimeout(() => {
+          if (getActualProgram() == "partyMode") {
+            leds.forEach(led => {
+              Info.setLed(led,  Math.floor(Math.random() * 2));
+
+              (Info.getLed(led)) ? Dom.turnLedsOpacity(led, "") : Dom.turnLedsOpacity([''], [led]);
+            });
+            
+            Node.emitSocket();
+            partyLoop();
+        }}, 1000);
+      }
+      partyLoop();
+    }
   };
   
   const changePage = (page) => {
@@ -132,6 +149,9 @@ const Controller = (() => {
     if (page == "multipleLeds") {
       Info.setLedOnOthersOff("green");
       Dom.turnLedsOpacity("green", Info.getLed("green", true, true));
+    }
+    else if (page == "partyMode") {
+      Dom.turnLedsOpacity([''], ["yellow", "green", "red"]);
     }
     setActualProgram(page);
     activateListener();
