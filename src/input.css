@@ -73,21 +73,32 @@ ul.ledSection > li {
 #partyMode {
   color: transparent;
   background: repeating-linear-gradient(to left, 
-  rgb(255, 0, 76),#fe9000, #fff020,
+  #ff004c,#fe9000, #fff020,
   #3edf4b,#3363ff, rgb(177, 2, 183), rgb(216, 1, 130));
   -webkit-background-clip: text;
   background-clip: text;
-  animation: rainbow 10s linear infinite;
+  animation: rainbow 20s linear infinite;
 }
 #partyMode:hover {
   color: white;
   background: repeating-linear-gradient(to left, 
   #ff004c,#fe9000, #fff020,
-  #3edf4b,#3363ff, rgb(177, 2, 183), rgb(216, 1, 130));
-  animation: rainbow 5s linear infinite;
+  #3edf4b,#3363ff, #b102b7, rgb(216, 1, 129));
+  animation: rainbow 13s linear infinite;
 }
 @keyframes rainbow{
-  100% {
-      background-position: 30em 0;
+  0% {
+    background-position: -100em 0;
   }
+  50% {
+    background-position: 0em 0;
+  }
+  100% {
+      background-position: 100em 0;
+  }
+}
+.partyMode {
+  background: repeating-linear-gradient(to left, 
+  #ff004c,#fe9000, #fff020,
+  #3edf4b,#3363ff, rgb(177, 2, 183), rgb(216, 1, 130));
 }

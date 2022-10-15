@@ -6,6 +6,7 @@ const Dom = (() => {
   const main = document.querySelector("main");
   const ledLi = document.querySelector("li.ledLi")
   const menuUl = document.querySelector("ul.ledSection");
+  const nav = document.querySelector("nav");
 
   ledLi.addEventListener("mouseenter", () => menuUl.classList.add("visible"));
   menuUl.addEventListener("mouseleave", () => menuUl.classList.remove("visible"));
@@ -35,15 +36,22 @@ const Dom = (() => {
 
   const changeDom = (page) => {
     main.textContent = "";
+    nav.classList.remove("partyMode");
+    let navColor = "";
 
     if (page == "singleLed") {
       main.appendChild(Led.createLedImage("green"));
+      navColor = "#4ade80";
     }
     else {
       main.appendChild(Led.createLedImage("green"));
       main.appendChild(Led.createLedImage("yellow"));
       main.appendChild(Led.createLedImage("red"));
+      if (page == "multipleLeds") {navColor = "#fbbf24"}
+      else if (page == "trafficLights") {navColor = "#f87171"}
+      else {nav.classList.add("partyMode")}
     }
+    nav.style.backgroundColor = navColor;
   };
 
   return {changeDom, changeLedImage, turnLedsOpacity};
@@ -126,6 +134,8 @@ const Controller = (() => {
       trafficLoop();
     }
     else if (program == "partyMode") {
+      Info.setLed("green", false);
+      Node.emitSocket();
       const leds = ["green", "yellow", "red"]
       const partyLoop = () => {
         setTimeout(() => {
@@ -138,7 +148,7 @@ const Controller = (() => {
             
             Node.emitSocket();
             partyLoop();
-        }}, 1000);
+        }}, 850);
       }
       partyLoop();
     }

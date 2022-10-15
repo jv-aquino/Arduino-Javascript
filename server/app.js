@@ -6,7 +6,7 @@ const parser = new ReadlineParser({
 });
 
 const port = new SerialPort({ 
-  path: "COM9",
+  path: "COM5",
   baudRate: 9600,
   dataBits: 8,
   parity: 'none',
