@@ -24,8 +24,10 @@
 ### Before doing anything, you need to clone this repo on your machine. This guide will not go in-depth about the coding used or the theory behind everything, it'll be much more pratical.
 ### Nonetheless, if you have an intermediate knowledge in front-end dev with HTML/CSS/JS and some basic understanding of Electronics and Arduino you'll be able to understand and learn from this program/guide.
 ### To clone this repo, you will need [Git](https://git-scm.com/) [installed and configured](https://techpp.com/2021/09/03/install-git-on-windows-guide/). After installing it, open Git Bash and go to a desired folder where you want your project (for example, the Documents folder).
-### Then, you will clone this repository with the following command and we will be fine to start:
+### Then, you will clone this repository with the following command:
 	git clone https://github.com/jv-aquino/Arduino-Javascript.git
+
+### The final thing you need to do before we get started is to [download Visual Studio Code](https://code.visualstudio.com/), which will be used to run most of our code.
 
 ------------
 
