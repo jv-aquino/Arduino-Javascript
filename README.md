@@ -56,6 +56,8 @@
 
 ![Arduino IDE Print](https://i.imgur.com/Q3As1Lz.png)
 
+### Besides handling the information received by the server, the Arduino program is also using a logic that uses numbers from 0 to 7 to represent which LEDs are on, where 0 refers to all leds being OFF and 7 refers to all leds being ON.
+
 ------------
 
 ## 3. NodeJS Server
@@ -82,6 +84,17 @@
 ------------
 
 ## 5. Back-end
+### The Back-end is the part responsible for connecting the Webpage with a Server or a Database. In this case, our Back-end is informing the server which LEDs are on and which are off, so that the server can send this information to the Arduino Board that will handle the Electronics logic.
+### Our Back-end, besides the JS logic of switching the user interface and consequently the page status, is basically resumed in 2 files: [info.js](./src/info.js) (which holds all the LEDs Info) and [node.js](./src/node.js) (responsible for sending the Info to the NodeJS Server).
+
+### Like explained above, the **info.js** handles all the Information stuff and can change its properties. But the program responsible for coordinating all the logic is [index.js](./src/index.js), which is controlling all the logic on the Controller module. This module controls all the js logic by: connecting the UI with the Dom module, changing the Info and also calling the Node module when we need to send new Info to the Server.
+
+![info.js file print](https://i.imgur.com/ApvPGk5.png)
+
+### The **node.js** file is getting the Info and using the same logic inside the Arduino program (0 for all LEDs off, 7 for all LEDs on) in order to send the right number based on the current Info situation. 
+### In order to send this information to the Server, we're using WebSocket, which is a technology used to send and receive packets of information via websites to Servers or Databases, and in this is just send a message with a status of the LEDs, and this status has the value that will be send to the Arduino.
+
+![node.js file print](https://i.imgur.com/pQhXHX9.png)
 
 ------------
 
