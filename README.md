@@ -99,3 +99,19 @@
 ------------
 
 ## 6. CONNECTING EVERYTHING
+### The final thing that we will need to do after all this guide is to (finally) **TURN ON THE SERVER!** In order to do that, we'll **review *some* steps** and then execute NodeJS. So let's do it ->
+1. Assemble the Arduino Circuit
+2. Connect the Arduino to the PC
+3. Open the Arduino IDE and Upload the program to the Arduino
+4. Open VS Code and open the Arduino-Javascript project
+5. Open the Web Page (index.html) in your browser
+6. Open the VS Code terminal by clicking on **Terminal > New Terminal**
+7. Turn on the NodeJS Server by typing
+
+------------
+
+	node ./server/app.js
+------------
+8. **Reload the Web Page and Have fun!!!!**
+
+![App working](https://i.imgur.com/zL63Zsh.jpg)
