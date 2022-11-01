@@ -46,10 +46,25 @@
 ## 2. Arduino Program
 ### To write the .ino program - which will be loaded in the Arduino so it can wait for the instructions later - you will need to [install the Arduino IDE](https://www.arduino.cc/en/software/#legacy-ide-18x)*
 *in this case we are using the legacy version which is supported by pretty much any computer, but you can also use the 2.0 version if you want to
+### After downloading it, we will need to configure the IDE to run the program in our Arduino ->
+1. Open the Arduino IDE and go to **File > Open > (find the path and click on arduino.ino)**
+2. Connect the Arduino to some USB Port of your PC
+3. On the Arduino IDE, go to **Tools > Board > (select your Arduino Board)** 
+4. Then, go to **Tools > Port > COMX (Arduino (your model))**
+5. ***Write down the COMX, we'll need it in the next section* (in this case, mine is COM10)**
+
+![Arduino IDE Print](https://i.imgur.com/Q3As1Lz.png)
 
 ------------
 
 ## 3. NodeJS Server
+### To connect the Arduino with our webpage, we'll need a server. NodeJS is an engine used to run JavaScript outside of the browser and transform JS in a back-end language like PHP, Python and Ruby. 
+### In order to configure our server you need to ->
+1. [Download NodeJS (LTS)](https://nodejs.org/en/) 
+2. Open Visual Studio Code and go to **File > Open Folder > (find and select Arduino-Javascript)**
+3. Open the file explorer on VS Code and open **server > app.js**. There, you will need to change the port path to your own **COM port** (mine is COM10 in this case):
+
+![NodeJS Port Config](https://i.imgur.com/UZ0qrj8.png)
 
 ------------
 
