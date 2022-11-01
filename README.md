@@ -52,6 +52,7 @@
 3. On the Arduino IDE, go to **Tools > Board > (select your Arduino Board)** 
 4. Then, go to **Tools > Port > COMX (Arduino (your model))**
 5. ***Write down the COMX, we'll need it in the next section* (in this case, mine is COM10)**
+6. Finally, click on the Upload (->) button to load the program on the Arduino.
 
 ![Arduino IDE Print](https://i.imgur.com/Q3As1Lz.png)
 
@@ -69,6 +70,14 @@
 ------------
 
 ## 4. Front-end
+### The front-end is the visual part of our project, in this case it'll be used to change the exhibit  inform the user which LEDs are on or off on the website, and to see it we will use the **[Live Server extension of VS Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)**. So, ->
+1. **[Install](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)** the extension
+2. Click on the explorer section of VS Code and click on **dist > index.html**
+3. Click on ***Go live*** in the bottom right corner.
+4. Play around with the site! For now it'll not do anything because we've not turned on the server yet and we haven't explained the "Back-end"!
+
+![Go Live Image](https://i.imgur.com/bUD2teP.png)
+![Webpage Print](https://i.imgur.com/TWaJvNX.png)
 
 ------------
 
